@@ -18,7 +18,7 @@ export const MathSymbolButton: React.FC<MathSymbolButtonProps> = ({
   return (
     <button 
       className={cn(
-        "py-3 px-4 rounded-lg text-lg font-medium transition-transform active:scale-95",
+        "py-3 px-4 rounded-lg text-md font-medium transition-transform active:scale-95",
         active 
           ? "bg-purple-600 text-white hover:bg-purple-700"
           : "bg-white text-gray-800 hover:bg-gray-100 shadow-sm", 

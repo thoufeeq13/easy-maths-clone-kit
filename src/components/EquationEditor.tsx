@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Pencil, Plus } from "lucide-react";
@@ -20,7 +21,18 @@ const categories = [
   "Greek Letters"
 ];
 
+// Symbol sets for each category
 const numberSymbols = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
+const fractionSymbols = ['½', '⅓', '⅔', '¼', '¾', '⅕', '⅖', '⅗', '⅘', '⅙', '⅚', '⅐', '⅛', '⅜', '⅝', '⅞', '⁄'];
+const letterSymbols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+const operationSymbols = ['+', '-', '×', '÷', '=', '≠', '±'];
+const comparisonSymbols = ['<', '>', '≤', '≥', '≈', '∝'];
+const bracketSymbols = ['(', ')', '[', ']', '{', '}', '|'];
+const trigonometrySymbols = ['sin', 'cos', 'tan', 'csc', 'sec', 'cot', '°', '′', '″'];
+const advancedSymbols = ['π', '√', '∛', '∜', '∞', '^', '!', 'Σ', 'Π'];
+const setTheorySymbols = ['∈', '∉', '⊂', '⊆', '∪', '∩', '∅', '∀', '∃'];
+const calculusSymbols = ['∫', '∂', '′', '″', '∇', 'lim', 'dx', 'dy'];
+const greekLetterSymbols = ['α', 'β', 'γ', 'δ', 'ε', 'θ', 'λ', 'μ', 'σ', 'φ', 'Ω'];
 
 export const EquationEditor: React.FC = () => {
   const [activeTab, setActiveTab] = useState("tab-1");
@@ -92,9 +104,9 @@ export const EquationEditor: React.FC = () => {
               />
             </div>
 
-            {/* Categories section */}
-            <div className="mb-6 overflow-x-auto whitespace-nowrap pb-2">
-              <div className="flex gap-2">
+            {/* Categories section - changed from horizontal scroll to grid */}
+            <div className="mb-6">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-2">
                 {categories.map((category) => (
                   <CategoryTab 
                     key={category}
@@ -113,7 +125,56 @@ export const EquationEditor: React.FC = () => {
                   {symbol}
                 </MathSymbolButton>
               ))}
-              {/* We would add other symbol categories here based on the activeCategory */}
+              {activeCategory === "Fractions" && fractionSymbols.map((symbol) => (
+                <MathSymbolButton key={symbol} onClick={() => handleSymbolClick(symbol)}>
+                  {symbol}
+                </MathSymbolButton>
+              ))}
+              {activeCategory === "Letters" && letterSymbols.map((symbol) => (
+                <MathSymbolButton key={symbol} onClick={() => handleSymbolClick(symbol)}>
+                  {symbol}
+                </MathSymbolButton>
+              ))}
+              {activeCategory === "Basic Operations" && operationSymbols.map((symbol) => (
+                <MathSymbolButton key={symbol} onClick={() => handleSymbolClick(symbol)}>
+                  {symbol}
+                </MathSymbolButton>
+              ))}
+              {activeCategory === "Comparisons" && comparisonSymbols.map((symbol) => (
+                <MathSymbolButton key={symbol} onClick={() => handleSymbolClick(symbol)}>
+                  {symbol}
+                </MathSymbolButton>
+              ))}
+              {activeCategory === "Brackets" && bracketSymbols.map((symbol) => (
+                <MathSymbolButton key={symbol} onClick={() => handleSymbolClick(symbol)}>
+                  {symbol}
+                </MathSymbolButton>
+              ))}
+              {activeCategory === "Trigonometry" && trigonometrySymbols.map((symbol) => (
+                <MathSymbolButton key={symbol} onClick={() => handleSymbolClick(symbol)}>
+                  {symbol}
+                </MathSymbolButton>
+              ))}
+              {activeCategory === "Advanced" && advancedSymbols.map((symbol) => (
+                <MathSymbolButton key={symbol} onClick={() => handleSymbolClick(symbol)}>
+                  {symbol}
+                </MathSymbolButton>
+              ))}
+              {activeCategory === "Set Theory" && setTheorySymbols.map((symbol) => (
+                <MathSymbolButton key={symbol} onClick={() => handleSymbolClick(symbol)}>
+                  {symbol}
+                </MathSymbolButton>
+              ))}
+              {activeCategory === "Calculus" && calculusSymbols.map((symbol) => (
+                <MathSymbolButton key={symbol} onClick={() => handleSymbolClick(symbol)}>
+                  {symbol}
+                </MathSymbolButton>
+              ))}
+              {activeCategory === "Greek Letters" && greekLetterSymbols.map((symbol) => (
+                <MathSymbolButton key={symbol} onClick={() => handleSymbolClick(symbol)}>
+                  {symbol}
+                </MathSymbolButton>
+              ))}
             </div>
 
             {/* Accessibility Settings */}
